@@ -1,0 +1,24 @@
+body {
+  background-color: #03011f;
+  font-family: "Source Sans Pro";
+  color: #6cacc5;
+  text-align: center;
+}
+
+canvas {
+  margin: 50px auto;
+}
+
+.win {
+  width: 100%;
+  height: auto;
+  visibility: hidden;
+}
+
+.win h1 {
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+}
