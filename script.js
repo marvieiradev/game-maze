@@ -1,5 +1,6 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
+
 const tileSize = 25;
 
 canvas.height = tileSize * 22;
@@ -7,13 +8,14 @@ canvas.width = tileSize * 20;
 
 const player = {
   x: canvas.width - tileSize,
-  x: canvas.height - tileSize * 5,
+  y: canvas.height - tileSize * 5,
   radius: tileSize / 4,
   prevPos: {},
 };
 
 let animation;
-let rigthPressed = false;
+
+let rightPressed = false;
 let leftPressed = false;
 let upPressed = false;
 let downPressed = false;
@@ -39,7 +41,7 @@ function drawMaze() {
       let tileY = i * tileSize;
       tiles[i][j].x = tileX;
       tiles[i][j].y = tileY;
-      if (map[i][j] == 1) {
+      if (map[i][j] === 1) {
         tiles[i][j].type = "wall";
         drawWall(tileX, tileY);
       } else {
@@ -55,37 +57,28 @@ function drawWall(x, y) {
 }
 
 function drawEmpty(x, y) {
-  ctx.fillStyle = "#30011f";
+  ctx.fillStyle = "#03011f";
   ctx.fillRect(x, y, tileSize, tileSize);
 }
 
 function drawPlayer() {
-  ctx.beginPath();
-  ctx.arc(
-    player.x + tileSize / 2,
-    player.y + tileSize / 2,
-    player.radius,
-    0,
-    2 * Math.PI
-  );
-  ctx.fillStyle = "red";
-  ctx.fill();
-  ctx.closePath();
+  ctx.font = "20px monospaced";
+  ctx.fillText("🏃", player.x + tileSize / 3, player.y + tileSize / 1.5);
 }
 
 function updatePosition() {
   player.prevPos = { x: player.x, y: player.y };
-  if (rigthPressed) {
+  if (rightPressed) {
     player.x += 2;
   }
   if (leftPressed) {
     player.x -= 2;
   }
-  if (downPressed) {
-    player.y += 2;
-  }
   if (upPressed) {
     player.y -= 2;
+  }
+  if (downPressed) {
+    player.y += 2;
   }
 }
 
