@@ -1,5 +1,6 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
+var maze = sessionStorage.getItem("maze");
 
 const tileSize = 25;
 
@@ -19,7 +20,7 @@ let rightPressed = false;
 let leftPressed = false;
 let upPressed = false;
 let downPressed = false;
-const map = mazes[0];
+const map = mazes[maze ? maze : 0];
 
 var tiles = [];
 for (var i = 0; i < map.length; i++) {
@@ -86,9 +87,13 @@ function checkCollision() {
   if (player.x + tileSize > canvas.width) {
     player.x = player.prevPos.x;
   }
-  if (player.y + player.radius < 0) {
-    cancelAnimationFrame(animation);
-    gameOver();
+  if (player.y + player.radius < 0 || player.x + player.radius < 0) {
+    if (maze > 1) {
+      cancelAnimationFrame(animation);
+      gameOver();
+    } else {
+      newMaze();
+    }
   }
   for (var i = 0; i < map.length; i++) {
     for (var j = 0; j < map[i].length; j++) {
@@ -111,6 +116,12 @@ function gameOver() {
   canvas.style.visibility = "hidden";
   var win = document.querySelector(".win");
   win.style.visibility = "visible";
+  sessionStorage.clear();
+}
+
+function newMaze() {
+  sessionStorage.setItem("maze", Number(maze) + 1);
+  window.location.reload();
 }
 
 document.addEventListener("keydown", function (e) {

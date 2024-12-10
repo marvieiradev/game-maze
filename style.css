@@ -22,3 +22,18 @@ canvas {
   right: 0;
   top: 50%;
 }
+
+button {
+  background-color: #6cacc5;
+  color: #03011f;
+  padding: 2px 10px;
+  font-size: 25px;
+  border-radius: 5px;
+  border: none;
+  margin: 0 300px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 60%;
+  cursor: pointer;
+}
