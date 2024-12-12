@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,11 +10,15 @@
     <h1>Jogo do Labirinto</h1>
     <div class="pontuacao">
       <p id="fase">Fase: 0</p>
-      <p id="tempo">Tempo: 00</p>
+      <p id="tempo">Tempo: 60</p>
     </div>
     <canvas width="500" height="500" id="gameCanvas"></canvas>
     <div class="win">
       <h1>Você Venceu!</h1>
+      <button onclick="window.location.reload()">Reiniciar</button>
+    </div>
+    <div class="lose">
+      <h1>Game Over!</h1>
       <button onclick="window.location.reload()">Reiniciar</button>
     </div>
     <script src="maze.js"></script>

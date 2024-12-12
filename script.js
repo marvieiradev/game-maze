@@ -2,11 +2,28 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 var maze = sessionStorage.getItem("maze");
 var fase = document.getElementById("fase");
+var tempoRest = document.getElementById("tempo");
 
 const tileSize = 25;
 
 canvas.height = tileSize * 22;
 canvas.width = tileSize * 20;
+
+let tempo = 60;
+let timer;
+
+function startTimer() {
+  tempo = 60;
+  timer = setInterval(function () {
+    tempo--;
+    tempoRest.innerText = "Tempo: " + tempo;
+    if (tempo < 0) {
+      tempo = 0;
+      clearInterval(timer);
+      gameOver();
+    }
+  }, 1000);
+}
 
 const player = {
   x: canvas.width - tileSize,
@@ -89,9 +106,9 @@ function checkCollision() {
     player.x = player.prevPos.x;
   }
   if (player.y + player.radius < 0 || player.x + player.radius < 0) {
-    if (maze > 1) {
+    if (maze > 2) {
       cancelAnimationFrame(animation);
-      gameOver();
+      gameWin();
     } else {
       newMaze();
     }
@@ -113,14 +130,28 @@ function checkCollision() {
   }
 }
 
-function gameOver() {
+function gameWin() {
+  clearInterval(timer);
   canvas.style.visibility = "hidden";
   var win = document.querySelector(".win");
+  var pont = document.querySelector(".pontuacao");
   win.style.visibility = "visible";
+  pont.style.opacity = 0;
+  sessionStorage.clear();
+}
+
+function gameOver() {
+  clearInterval(timer);
+  canvas.style.visibility = "hidden";
+  var lose = document.querySelector(".lose");
+  var pont = document.querySelector(".pontuacao");
+  lose.style.visibility = "visible";
+  pont.style.opacity = 0;
   sessionStorage.clear();
 }
 
 function newMaze() {
+  clearInterval(timer);
   sessionStorage.setItem("maze", Number(maze) + 1);
   window.location.reload();
 }
@@ -161,3 +192,4 @@ function update() {
 }
 
 animation = requestAnimationFrame(update);
+startTimer();
