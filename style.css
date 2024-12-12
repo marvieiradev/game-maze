@@ -5,8 +5,20 @@ body {
   text-align: center;
 }
 
+.pontuacao {
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.pontuacao p {
+  font-size: 20px;
+}
+
 canvas {
-  margin: 50px auto;
+  margin: 40px auto;
 }
 
 .win {

@@ -1,6 +1,7 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 var maze = sessionStorage.getItem("maze");
+var fase = document.getElementById("fase");
 
 const tileSize = 25;
 
@@ -156,6 +157,7 @@ function update() {
   drawPlayer();
   checkCollision();
   animation = requestAnimationFrame(update);
+  fase.innerText = "Fase: " + (Number(maze) + 1);
 }
 
 animation = requestAnimationFrame(update);
