@@ -3,6 +3,10 @@ const ctx = canvas.getContext("2d");
 var maze = sessionStorage.getItem("maze");
 var fase = document.getElementById("fase");
 var tempoRest = document.getElementById("tempo");
+var win = document.querySelector(".win");
+var pont = document.querySelector(".pontuacao");
+var lose = document.querySelector(".lose");
+var next = document.querySelector(".next");
 
 const tileSize = 25;
 
@@ -110,7 +114,7 @@ function checkCollision() {
       cancelAnimationFrame(animation);
       gameWin();
     } else {
-      newMaze();
+      showNext();
     }
   }
   for (var i = 0; i < map.length; i++) {
@@ -133,27 +137,31 @@ function checkCollision() {
 function gameWin() {
   clearInterval(timer);
   canvas.style.visibility = "hidden";
-  var win = document.querySelector(".win");
-  var pont = document.querySelector(".pontuacao");
   win.style.visibility = "visible";
-  pont.style.opacity = 0;
+  pont.style.visibility = "hidden";
   sessionStorage.clear();
 }
 
 function gameOver() {
   clearInterval(timer);
   canvas.style.visibility = "hidden";
-  var lose = document.querySelector(".lose");
-  var pont = document.querySelector(".pontuacao");
   lose.style.visibility = "visible";
-  pont.style.opacity = 0;
+  pont.style.visibility = "hidden";
   sessionStorage.clear();
 }
 
-function newMaze() {
+function nextMaze() {
   clearInterval(timer);
+  next.style.visibility = "hidden";
   sessionStorage.setItem("maze", Number(maze) + 1);
   window.location.reload();
+}
+
+function showNext() {
+  clearInterval(timer);
+  canvas.style.visibility = "hidden";
+  next.style.visibility = "visible";
+  pont.style.visibility = "hidden";
 }
 
 document.addEventListener("keydown", function (e) {

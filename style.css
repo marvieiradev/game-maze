@@ -35,6 +35,20 @@ canvas {
   top: 50%;
 }
 
+.next {
+  width: 100%;
+  height: auto;
+  visibility: hidden;
+}
+
+.next h1 {
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+}
+
 .lose {
   width: 100%;
   height: auto;
