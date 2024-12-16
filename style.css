@@ -1,8 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Agu+Display&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
 body {
   background-color: #03011f;
-  font-family: "Source Sans Pro";
+  font-family: "Ubuntu", sans-serif;
   color: #6cacc5;
   text-align: center;
+}
+
+.title {
+  font-family: "Agu Display", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "MORF" 0;
+  font-size: 45px;
+  margin-top: 0px;
 }
 
 .pontuacao {
@@ -18,7 +29,7 @@ body {
 }
 
 canvas {
-  margin: 40px auto;
+  margin: 20px auto;
 }
 
 .win {
@@ -27,26 +38,10 @@ canvas {
   visibility: hidden;
 }
 
-.win h1 {
-  margin: 0 auto;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-}
-
 .next {
   width: 100%;
   height: auto;
   visibility: hidden;
-}
-
-.next h1 {
-  margin: 0 auto;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
 }
 
 .lose {
@@ -55,6 +50,8 @@ canvas {
   visibility: hidden;
 }
 
+.win h1,
+.next h1,
 .lose h1 {
   margin: 0 auto;
   position: absolute;

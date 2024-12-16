@@ -7,6 +7,7 @@ var win = document.querySelector(".win");
 var pont = document.querySelector(".pontuacao");
 var lose = document.querySelector(".lose");
 var next = document.querySelector(".next");
+var char = "🏃";
 
 const tileSize = 25;
 
@@ -86,7 +87,7 @@ function drawEmpty(x, y) {
 
 function drawPlayer() {
   ctx.font = "20px monospaced";
-  ctx.fillText("🏃", player.x + tileSize / 3, player.y + tileSize / 1.5);
+  ctx.fillText(char, player.x + tileSize / 20, player.y + tileSize / 2 + 7);
 }
 
 function updatePosition() {
